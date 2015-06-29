@@ -1,0 +1,51 @@
+# ~/.tmuxinator/cooper.yml
+
+name: cooper
+root: ~/Documents/chooper-server/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t cooper
+
+windows:
+  - server:
+      layout: main-horizontal
+      panes:
+        - shenmeiguan-log:
+          - ssh pingguoyuan
+          - tail -f /alidata1/log/shenmeiguan.log
+        - django-shell:
+          - ssh pingguoyuan
+          - cd /alidata1/cn.shenmeiguan/web/
+          - source .env/bin/activate
+          - ./manage.py shell
+        - nginx-log:
+          - ssh pingguoyuan
+          - tail -f /alidata1/log/nginx/shenmeiguan.access.log
+  - editor:
+      layout: even-horizontal
+      panes:
+        - emacs
+        - working-dir:
+          - j chooper
+          - workon chooper_server
