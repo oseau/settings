@@ -1,0 +1,9 @@
+map j 20j
+map k 20k
+map <C-s> /
+map f F
+map d dc
+map J gT
+map K gt
+set follow_new_tab=0
+
