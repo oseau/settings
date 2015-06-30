@@ -28,6 +28,14 @@ root: ~/Documents/chooper-server/
 # post: tmux -CC attach -t cooper
 
 windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - emacs:
+          - e
+        - working-dir:
+          - j chooper
+          - workon chooper_server
   - server:
       layout: main-horizontal
       panes:
@@ -42,10 +50,3 @@ windows:
         - nginx-log:
           - ssh pingguoyuan
           - tail -f /alidata1/log/nginx/shenmeiguan.access.log
-  - editor:
-      layout: even-horizontal
-      panes:
-        - emacs
-        - working-dir:
-          - j chooper
-          - workon chooper_server
