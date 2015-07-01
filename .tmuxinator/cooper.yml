@@ -34,8 +34,9 @@ windows:
         - emacs:
           - e
         - working-dir:
-          - j chooper
+          - cd ~/Documents/chooper-server
           - workon chooper_server
+          - source set_local_environ.bash
   - server:
       layout: main-horizontal
       panes:
