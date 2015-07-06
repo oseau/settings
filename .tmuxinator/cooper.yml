@@ -24,6 +24,7 @@ root: ~/Documents/chooper-server/
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
+
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t cooper
 
@@ -37,7 +38,7 @@ windows:
           - cd ~/Documents/chooper-server
           - workon chooper_server
           - source set_local_environ.bash
-  - server:
+  - pingguoyuan:
       layout: main-horizontal
       panes:
         - shenmeiguan-log:
@@ -51,3 +52,11 @@ windows:
         - nginx-log:
           - ssh pingguoyuan
           - tail -f /alidata1/log/nginx/shenmeiguan.access.log
+  - gucheng:
+      layout: even-horizontal
+      panes:
+        - celery-log:
+          - ssh gucheng
+          - tail -f /alidata1/log/celery/cooper.w1.log
+        - shell:
+          - ssh gucheng
