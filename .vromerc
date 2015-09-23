@@ -4,4 +4,12 @@ map f F
 map d dc
 map J gT
 map K gt
+map X <C-^>
+
+" disable conflicts function with Chrome default find function
+unmap <M-f>
+unmap <C-f>
+
+" use default printout shortcut
+unmap <C-p>
 set follow_new_tab=0
